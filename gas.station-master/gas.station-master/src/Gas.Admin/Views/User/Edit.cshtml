@@ -1,0 +1,133 @@
+﻿@{
+    ViewData["Title"] = "Users";
+}
+
+@model Gas.Admin.Models.User.UserEditVm
+
+<section class="contentWrapTop">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="contentWrapTopLeft">
+                    <h1>User</h1>
+                </div>
+                <div class="contentWrapTopRight">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit"></i>
+                                <span>User</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contentWrap">
+        <form role="form" id="UserEditForm" method="post" class="clearfix" action="/User/Edit">
+            <div class="row">
+                <div class="col-xs-12 col-md-9 loaderHolder">
+                    <section class="boxWrap">
+                        <div class="box">
+                            <div class="boxHeader">
+                                <div class="boxHeaderLeft">
+                                    <h3><span>User details</span></h3>
+                                </div>
+                            </div>
+                            <div class="boxBody">
+                                <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input  value="@Model.User.Email" name="Email" type="text" class="form-control collectItemEdit" data-valid="1" id="Email" placeholder="Email"/>
+                        <input  value="@Model.User.ID" name="Id" type="hidden" class="form-control collectItemEdit" data-valid="1" id="Id" placeholder="Id" readonly/>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input  value="" name="Password" type="password" class="form-control collectItemEdit" data-valid="1" id="Password" placeholder="Password" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        <input  value="" name="ConfirmPassword" type="password" class="form-control collectItemEdit" data-valid="1" id="ConfirmPassword" placeholder="Confirm Password" />
+                    </div>
+                </div>
+            </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="FullName">Firstname, Lastname</label>
+                                            <input value="@Model.User.FullName" name="FullName" type="text" class="form-control collectItemEdit" data-valid="1" id="FullName" placeholder="Firstname, Lastname"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="Permissions">Roles</label>
+                                            <select id="Permissions" name="Permissions" class="selectize collectItemEdit" multiple>
+                                                <option value="">Select</option>
+                                                @foreach (var item in Model.Roles)
+                                                {
+                                                    <option value="@item.ID" selected="@(Model.User.UserRoles.Any(r => r.RoleId == item.ID) ? true : false)">@item.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-xs-12 col-md-3">
+
+                    <section class="boxWrap">
+                        <div class="box">
+                            <div class="boxHeader">
+                                <div class="boxHeaderLeft">
+                                    <h3><span>Actions</span></h3>
+                                </div>
+                            </div>
+                            <div class="boxBody">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <button type="submit" class="btn btn-block btn-success btn-flat" id="itemEditSave">Save</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <a href="/User" type="button" class="btn btn-block btn-danger btn-flat">Discard</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </form>
+    </section>
+
+<partial name="Item/_ItemEditScripts"/>
+
+<script>
+$(document).ready(function() {
+    var validator = $("#UserEditForm").validate({
+                rules: {
+                    Password: {
+                        required: false,
+                        minlength: 6
+                    },
+                    ConfirmPassword: {
+                        equalTo: "#Password"
+                    }
+                },
+                messages: {
+                    Password: {
+                        minlength: "At least 6 symbols",
+                        required: "Enter Password"
+                    },
+                    ConfirmPassword: " Enter Confirm Password Same as Password"
+                },
+                onSubmit: true
+    });
+});
+</script>

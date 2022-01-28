@@ -1,0 +1,13 @@
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\bin\Debug\netcoreapp3.1\Gas.Shared.deps.json
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\bin\Debug\netcoreapp3.1\Gas.Shared.runtimeconfig.json
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\bin\Debug\netcoreapp3.1\Gas.Shared.runtimeconfig.dev.json
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\bin\Debug\netcoreapp3.1\Gas.Shared.dll
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\bin\Debug\netcoreapp3.1\Gas.Shared.pdb
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.csproj.AssemblyReference.cache
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.AssemblyInfoInputs.cache
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.AssemblyInfo.cs
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.csproj.CoreCompileInputs.cache
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.dll
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.pdb
+C:\Users\harut\OneDrive\Рабочий стол\gas.station\src\Gas.Shared\obj\Debug\netcoreapp3.1\Gas.Shared.genruntimeconfig.cache

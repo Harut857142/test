@@ -1,0 +1,189 @@
+﻿@{
+    ViewData["Title"] = "Devices";
+}
+    <section class="contentWrapTop">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="contentWrapTopLeft">
+                    <h1>Device</h1>
+                </div>
+                <div class="contentWrapTopRight">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit"></i>
+                                <span>Device</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contentWrap">
+        <form role="form" id="DeviceAddForm" class="clearfix" asp-controller="Device" asp-action="Add">
+            <div class="row">
+                <div class="col-xs-12 col-md-9 loaderHolder">
+                    <section class="boxWrap">
+                        <div class="box">
+                            <div class="boxHeader">
+                                <div class="boxHeaderLeft">
+                                    <h3><span>Device details</span></h3>
+                                </div>
+                            </div>
+                            <div class="boxBody">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="DeviceName">Device Name</label>
+                                            <input  value="" name="DeviceName" type="text" class="form-control collectItemEdit" data-valid="1" id="DeviceName" placeholder="DeviceName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="Key">Key</label>
+                                            <input  value="" name="Key" type="text" class="form-control collectItemEdit" data-valid="1" id="Key" placeholder="Key" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="Description">Description</label>
+                                            <input  value="" name="Description" type="text" class="form-control collectItemEdit" data-valid="1" id="Description" placeholder="Description" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowauto">flowauto</label>
+                                            <input  value="" name="DeviceConfig.flowauto" type="text" class="form-control collectItemEdit" id="flowauto" placeholder="flowauto" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="dppastaci">dppastaci</label>
+                                            <input  value="" name="DeviceConfig.dppastaci" type="text" class="form-control collectItemEdit" id="dppastaci" placeholder="dppastaci" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="dpdrac">dpdrac</label>
+                                            <input  value="" name="DeviceConfig.dpdrac" type="text" class="form-control collectItemEdit" id="dpdrac" placeholder="dpdrac" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="dpgorcakic">dpgorcakic</label>
+                                            <input  value="" name="DeviceConfig.dpgorcakic" type="text" class="form-control collectItemEdit" id="dpgorcakic" placeholder="dpgorcakic" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowpast">flowpast</label>
+                                            <input  value="" name="DeviceConfig.flowpast" type="text" class="form-control collectItemEdit" id="flowpast" placeholder="flowpast" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowsarqac">flowsarqac</label>
+                                            <input  value="" name="DeviceConfig.flowsarqac" type="text" class="form-control collectItemEdit" id="flowsarqac" placeholder="flowsarqac" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowhanac">flowhanac</label>
+                                            <input  value="" name="DeviceConfig.flowhanac" type="text" class="form-control collectItemEdit" id="flowhanac" placeholder="flowhanac" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="kgorcakic">kgorcakic</label>
+                                            <input  value="" name="DeviceConfig.kgorcakic" type="text" class="form-control collectItemEdit" id="kgorcakic" placeholder="kgorcakic" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="selfonoff">selfonoff</label>
+                                            <input  value="" name="DeviceConfig.selfonoff" type="text" class="form-control collectItemEdit" id="selfonoff" placeholder="selfonoff" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowmax">flowmax</label>
+                                            <input  value="" name="DeviceConfig.flowmax" type="text" class="form-control collectItemEdit" id="flowmax" placeholder="flowmax" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowproc">flowproc</label>
+                                            <input  value="" name="DeviceConfig.flowproc" type="text" class="form-control collectItemEdit" id="flowproc" placeholder="flowproc" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="presspastaci">presspastaci</label>
+                                            <input  value="" name="DeviceConfig.presspastaci" type="text" class="form-control collectItemEdit" id="presspastaci" placeholder="presspastaci" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="pressgorcakic">pressgorcakic</label>
+                                            <input  value="" name="DeviceConfig.pressgorcakic" type="text" class="form-control collectItemEdit" id="pressgorcakic" placeholder="pressgorcakic" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="onoff">onoff</label>
+                                            <input  value="true" name="DeviceConfig.onoff" type="checkbox" class="collectItemEdit" id="onoff" placeholder="onoff" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            <label for="flowAutoOnoff">flowAutoOnoff</label>
+                                            <input  value="true" name="DeviceConfig.flowAutoOnoff" type="checkbox" class="collectItemEdit" id="flowAutoOnoff" placeholder="flowAutoOnoff" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-xs-12 col-md-3">
+
+                    <section class="boxWrap">
+                        <div class="box">
+                            <div class="boxHeader">
+                                <div class="boxHeaderLeft">
+                                    <h3><span>Actions</span></h3>
+                                </div>
+                            </div>
+                            <div class="boxBody">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <button type="submit" class="btn btn-block btn-success btn-flat" id="itemEditSave">Save</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <a href="/Device" type="button" class="btn btn-block btn-danger btn-flat">Discard</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </form>
+    </section>
+
+<script>
+$('#openAddCoverModalName').click(function(e) {
+   e.preventDefault();
+   $('#coverImageModalName').modal('show');
+    
+});
+</script>

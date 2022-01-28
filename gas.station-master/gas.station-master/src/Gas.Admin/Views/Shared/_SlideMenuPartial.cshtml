@@ -1,0 +1,85 @@
+﻿@using Gas.Shared.Models.Core.Auth
+@inject Gas.Shared.Services.AuthorizeUserHelper authorizeUserHelper
+
+@{
+    bool hasPermission = authorizeUserHelper.HasPermission(User);
+    string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+//    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+//    var showBanner = !consentFeature?.CanTrack ?? false;
+//    var cookieString = consentFeature?.CreateConsentCookie();
+    
+    var isAdmin = authorizeUserHelper.HasPermission(User, (int)Modules.User, new int[] { (int)UserModule.Edit });
+}
+
+@if (hasPermission)
+{
+    <section class="mtSidebar">
+            <div class="sidebar-menu">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default panel-bg">
+                        <div class="panel-heading" role="tab" id="heading-device">
+                            <h4 class="panel-title sidebar-title">
+                                <a class="@(controllerName == "Device" ? "" : "collapsed")" href="#collapse-device-page" aria-controls="collapse-device-page" data-parent="#accordion" role="button" data-toggle="collapse" aria-expanded="false">
+                                    <div class="panel-title-left">
+                                        <i class="fa fa-users"></i>
+                                        <span>Devices</span>
+                                    </div>
+                                    <div class="panel-title-right"></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-device-page" aria-labelledby="heading-device" class="panel-collapse @(controllerName == "Permission" || controllerName == "Role" ? "collapse in" : "collapse")" role="tabpanel">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        <a href="/Device/Index">
+                                            <span>List</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        @if (isAdmin)
+                        {
+                            <div class="panel panel-default panel-bg">
+                                <div class="panel-heading" role="tab" id="heading-2">
+                                    <h4 class="panel-title sidebar-title">
+                                        <a class="@(controllerName == "Permission" || controllerName == "Role" ? "" : "collapsed")" href="#collapse-2-page" aria-controls="collapse-2-page" data-parent="#accordion" role="button" data-toggle="collapse" aria-expanded="false">
+                                            <div class="panel-title-left">
+                                                <i class="fa fa-users"></i>
+                                                <span>Permission, Roles, Users</span>
+                                            </div>
+                                            <div class="panel-title-right"></div>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse-2-page" aria-labelledby="heading-2" class="panel-collapse @(controllerName == "Permission" || controllerName == "Role" ? "collapse in" : "collapse")" role="tabpanel">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>
+                                                <a href="/Permission/Index">
+                                                    <span>Permissions</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/Role/Index">
+                                                    <span>Roles</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/User/Index">
+                                                    <span>Users</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        }
+                </div>
+            </div>
+        </section>
+}

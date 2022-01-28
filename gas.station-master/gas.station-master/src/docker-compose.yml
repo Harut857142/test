@@ -1,0 +1,25 @@
+﻿version: '3.4'
+
+networks:
+  frontend:
+    external:
+      name: nginx-proxy
+
+services:
+  gasadmin:
+    image: dregistry.k7-clan.com/gas.admin:latest
+    container_name: gas.admin
+    build:
+      context: .
+      dockerfile: Gas.Admin/Dockerfile
+    restart: always
+    volumes:
+      - ./data:/data
+    networks:
+      - frontend
+    environment:
+      - VIRTUAL_HOST=gas.k7-clan.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=gas.k7-clan.com
+      - LETSENCRYPT_EMAIL=info@k7-clan.com
+      - ASPNETCORE_ENVIRONMENT=Relaease

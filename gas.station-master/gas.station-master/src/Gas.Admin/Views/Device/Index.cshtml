@@ -1,0 +1,299 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Gas.Admin.Models.Device.DeviceVm
+
+<section class="contentWrapTop">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="contentWrapTopLeft">
+                    <h1>Device</h1>
+                </div>
+                <div class="contentWrapTopRight">
+                    <ul>
+                        <li>
+                            <a href="/Device">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span>Device</span>
+                            </a>
+                        </li>
+                        <li><a href="/Device"><span>Device</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="contentWrap">
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="boxWrap loaderHolder">
+                <div class="box">
+                    <div class="boxHeader">
+                        <div class="boxHeaderLeft">
+                            <h3>
+                                <i class="fa fa-shopping-bag"></i>
+                                <span>Edit</span>
+                            </h3>
+                        </div>
+                        <div class="boxHeaderRight">
+                            <div class="btn-group btn-group-sm nowrap" style="position: relative; top: -2px;">
+                                <a style="width: 28px;height: 28px;line-height: 28px; padding: 0;" href="/Device/Add" type="button" class="btn btn-info btn-flat"><i class="fa fa-plus"></i></a>
+                                <button style="width: 28px;height: 28px;line-height: 28px; padding: 0;" type="button" class="btn btn-info btn-flat" id="deleteAllBtn" data-deleteurl="/Device/Deletes" data-url="/Home/GetDeleteItemsModal" data-returnurl="@Context.Request.Path" ><i class="fa fa-trash-o"></i></button>
+                            </div>
+                            @* <div class="boxLang"> *@
+                            @*     <label for="elemLangs" class="hidden" hidden>Language</label> *@
+                            @*     <select id="elemLangs" class="form-control input-sm"> *@
+                            @*         <option value="en" selected>En</option> *@
+                            @*         <option value="ru" >Ru</option> *@
+                            @*         <option value="hy" >Hy</option> *@
+                            @*     </select> *@
+                            @* </div> *@
+                        </div>
+                    </div>
+                    <div class="boxBody">
+                        <div class="tableWrap">
+                            <div class="tableWrapIn">
+                                <table class="table table-bordered table-valignM">
+                                    <thead>
+                                    <tr>
+                                        <th class="minimal-width">
+                                            <div class="mtCheckbox">
+                                                <label>
+                                                    <input class="selectElems" type="checkbox" />
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </th>
+                                        <th>DeviceName</th>
+                                        <th>flowhanacset</th>
+                                        <th>flowpast</th>
+                                        <th>flowsarqac</th>
+                                        <th>dppastaci</th>
+                                        <th>presspastaci</th>
+                                        <th>last update</th>
+                                        <th>Options</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var item in @Model.List.Results)
+                                    {
+                                        <tr>
+                                            <td class="minimal-width">
+                                                <div class="mtCheckbox">
+                                                    <label>
+                                                        <input class="selItems" data-id="@item.Id" type="checkbox"/>
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="lineFix">
+                                                    @item.DeviceName
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <form method="post" class="clearfix" action="/Device/Edit">
+                                                    <div class="lineFix">
+                                                        <input type="hidden" name="Id" value="@item.Id"/>
+                                                        <input type="hidden" name="UserId" value="@item.UserId"/>
+                                                        <input name="DeviceConfig.flowhanacset" value="@item.DeviceConfig.flowhanacset"/>
+                                                        <button type="submit" class="btn btn-info btn-flat deleteElem" ><i class="fa fa-pencil"></i></button>
+
+                                                    </div></form>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="lineFix">
+                                                    @item.DeviceConfig.flowpast
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="lineFix">
+                                                    @item.DeviceConfig.flowsarqac
+                                                </div>
+                                            </td> 
+                                            <td>
+                                                <div class="lineFix">
+                                                    @item.DeviceConfig.dppastaci
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="lineFix">
+                                                    @item.DeviceConfig.presspastaci
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @item.DeviceConfig.ModificationDate
+                                            </td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    <a type="button" class="btn btn-info btn-flat editElem" href="/Device/Edit/@item.Id"><i class="fa fa-pencil"></i></a>
+                                                    <button type="button" class="btn btn-info btn-flat deleteElem" data-id="@item.Id"  data-deleteurl="/Device/Deletes" data-url="/Home/GetDeleteItemsModal" data-returnurl="@Context.Request.Path"><i class="fa fa-trash-o"></i></button>
+                                                </div>
+                                            </td>
+                                            <td class="signal yellow">
+                                                <span class="" id="@item.Key"></span>
+                                            </td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxFooter boxFooterPagination">
+                        <div class="boxFooterCounterWrap pt-0 pb-0"></div>
+                        <div class="boxFooterPaginationWrap">
+                            <div class="boxFooterLeft">
+                                <div class="pageCountWrap">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-addon">
+                                            <span>Show</span>
+                                        </span>
+                                        <label for="viewCountSelect" hidden=""></label>
+                                        
+                                        <form asp-controller="Device" asp-action="Index" method="get">
+                                            <select name="PageSize" class="form-control" onchange="this.form.submit()">
+                                                <option value="10"  selected="@(Model.List.PageSize == 10 ? true : false)">10</option>
+                                                <option value="20" selected="@(Model.List.PageSize == 20 ? true : false)">20</option>
+                                                <option value="50" selected="@(Model.List.PageSize == 50 ? true : false)">50</option>
+                                                <option value="100" selected="@(Model.List.PageSize == 100 ? true : false)">100</option>
+                                            </select>
+                                        </form>
+                                        <span class="input-group-addon">
+                                            <span>Entries</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="boxFooterRight">
+                                <div class="boxPaganation clearfix">
+                                    <ul class="pagination">
+                                        
+                                        <li class="@(Model.List.CurrentPage == 1 ? "disabled" : null)" ><a class="@(Model.List.CurrentPage == Model.List.PageCount ? "disabled" : null)" href="@Url.Action("Index", new { Page = (Model.List.CurrentPage > 1 ? Model.List.CurrentPage - 1 : Model.List.CurrentPage), PageSize = Model.List.PageSize })"><i class="fa fa-angle-double-left"></i></a></li>
+
+                                        
+                                        @if (Model.List.PageCount <= 3)
+                                        {
+                                            @for (var i = 1; i <= Model.List.PageCount; i++)
+                                            {
+                                                <li class="page-item">
+                                                    <a href="@Url.Action("Index", new { Page = i, PageSize = Model.List.PageSize })" class="@(Model.List.CurrentPage == i ? "active" : "")">@i</a>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (Model.List.CurrentPage > 1)
+                                            {
+                                                <li class="page-item">
+                                                    <a href="@Url.Action("Index", new { Page = Model.List.CurrentPage - 1, PageSize = Model.List.PageSize })" class="">@(Model.List.CurrentPage - 1)</a>
+                                                </li>
+                                            }
+                                            <li class="page-item">
+                                                <a href="@Url.Action("Index", new { Page = Model.List.CurrentPage, PageSize = Model.List.PageSize })" class="@(Model.List.CurrentPage == Model.List.CurrentPage ? "active" : "")">@Model.List.CurrentPage</a>
+                                            </li>
+                                            @if (Model.List.CurrentPage < Model.List.PageCount - 1)
+                                            {
+                                                <li class="page-item">
+                                                    <a href="@Url.Action("Index", new { Page = Model.List.CurrentPage + 1, PageSize = Model.List.PageSize })" class="@(Model.List.CurrentPage == Model.List.CurrentPage + 1 ? "active" : "")">@(Model.List.CurrentPage + 1)</a>
+                                                </li>
+                                            }
+                                            @if (Model.List.CurrentPage < Model.List.PageCount)
+                                            {
+                                                <li class="page-item">
+                                                    <a href="@Url.Action("Index", new { Page = Model.List.PageCount, PageSize = Model.List.PageSize })" class="@(Model.List.CurrentPage == Model.List.PageCount ? "active" : "")">@(Model.List.PageCount)</a>
+                                                </li>
+                                            }
+                                        }
+
+                                        <li  class="@(Model.List.CurrentPage == Model.List.PageCount ? "disabled" : null)" )><a class="@(Model.List.CurrentPage == Model.List.PageCount ? "disabled" : null)" href="@Url.Action("Index", new { Page = (Model.List.CurrentPage < Model.List.PageCount ? Model.List.CurrentPage + 1 : Model.List.PageCount), PageSize = Model.List.PageSize })"><i class="fa fa-angle-double-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <style>
+         .yellow{
+            background-color: #ffaa00;
+         }
+         .green{
+            background-color: #329432 !important;
+         }
+    </style>
+</section>
+
+<partial name="Table/_ListDeleteScripts"/>
+
+<script>
+
+"use strict";
+
+var connection = new signalR.HubConnectionBuilder().withUrl("/devicehub").build();
+
+//Disable send button until connection is established
+connection.on("DeviceInfo", function (data) {
+    let parsed = JSON.parse(data);
+    // console.log(new Date(parsed.date))
+    // debugger
+    console.log(parsed)
+    var t = new Date(parsed.date);
+    var time = new Date(t.getTime() + (1 * 60 * 60 * 1000 * 4))
+    console.log(time)
+    $(".signal").each(function (index){
+
+        if ($(this).children("span").attr("id").toUpperCase() === parsed.key.toUpperCase()){ 
+            
+            if (time.getHours().toString() + time.getMinutes().toString() === new Date(Date.now()).getHours().toString() + new Date(Date.now()).getMinutes().toString()){
+             $(this).removeClass("yellow")
+             $(this).addClass("green")
+             setTimeout(function (){
+                $(".signal").eq(index).removeClass("green")
+                $(".signal").eq(index).addClass("yellow")
+             }, 8000)
+            }
+            
+        }
+    })  
+    
+    // let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // t2.toLocaleString('en-US', { timeZone: timezone });
+    // console.log(date)
+    // // date.setMinutes(dt.getMinutes() + date.getTimezoneOffset())
+    // // console.log(dt)
+   //  var date = new Date(); 
+   //  var now_utc =  Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+   //   date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+   // 
+   //  var then_utc =  Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate(),
+   //   t.getUTCHours(), t.getUTCMinutes(), t.getUTCSeconds());
+   //  then_utc += 30 * 8 * 60 * 1000;
+   //  var t1  = new Date(now_utc);
+   //  var t2  = new Date(then_utc);
+   //      console.log(t1, t2)
+   //
+   // var difference = (t1 - t2) / 1000;
+   // 
+   // console.log(difference)
+});
+
+connection.start().then(function () {
+}).catch(function (err) {
+    return console.error(err.toString());
+});
+
+// document.getElementById("sendButton").addEventListener("click", function (event) {
+//     var user = document.getElementById("userInput").value;
+//     var message = document.getElementById("messageInput").value;
+//     connection.invoke("SendMessage", user, message).catch(function (err) {
+//         return console.error(err.toString());
+//     });
+//     event.preventDefault();
+// });
+</script>
